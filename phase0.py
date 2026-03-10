@@ -1,3 +1,5 @@
+import time
+import asyncio
 
 class User:
      def __init__(self, username: str, email: str, bio: str = ""):
@@ -26,7 +28,33 @@ class User:
         return True, "Username is valid."
      
 
+#Version 1 - blocking
+def fetch_user_sync(user_id: int) -> str:
+    time.sleep(2)  # Simulate a delay in fetching user data
+    return f"User {user_id}"
+
+#Version 2 - non-blocking
+async def fetch_user_async(user_id: int) -> str:
+    await asyncio.sleep(2)  # Simulate a delay in fetching user data
+    return f"User {user_id}"
+     
+
 if __name__ == "__main__":
-    user = User("test_user", "test_user@example.com")
-    print(user.validate_username(user.username))
-    print(user.verify_email())
+    # Syncm - fetch 3 users, measure time
+    start_time = time.time()
+    for i in range(1, 4):
+        print(fetch_user_sync(i))
+    print(f"Time taken for synchronous fetching: {time.time() - start_time:.2f} seconds") # 6 seconds 
+
+    # Async - fetch 3 users, measure time
+    async def main():
+        start_time = time.time()
+        results = await asyncio.gather(
+            fetch_user_async(1),
+            fetch_user_async(2),
+            fetch_user_async(3))
+        print(results)
+        # for i in range(1, 4):
+        #     print(await fetch_user_async(i))
+        print(f"Time taken for asynchronous fetching: {time.time() - start_time:.2f} seconds") # 2 seconds
+    asyncio.run(main())
