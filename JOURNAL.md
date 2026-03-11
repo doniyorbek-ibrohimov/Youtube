@@ -8,7 +8,7 @@ Commit this file every session.
 **What I built:** User class in pure Python — rebuilt from Django’s CustomUser model. Added validate_username() as a
 @staticmethod, verify_email() as an instance method.
 **What clicked:** @staticmethod vs instance method distinction. If it doesn’t need self, it’s a static.
-**Bugs fixed:** __init_ missing closing underscore — object construction was silently broken. isalnum() rejecting underscores.
+**Bugs fixed:** __init__ missing closing underscore — object construction was silently broken. isalnum() rejecting underscores.
 **Commit:** Phase 0 Day 1: User class - OOP, type hints, staticmethod 
 ### Tuesday, Mar 10 
 **Topics:** 'async/await', 'asyncio.gather'
@@ -17,17 +17,17 @@ Commit this file every session.
 **Bugs fixed:** None
 **Commit:** 'Phase 0 Day 2: async/await - gather, asyncio.run, sync vs async timing'
 ### Wednesday, Mar 11 
+**Topics:** Decorators
+**What I built:** @timer that wraps a function fetch_videos.
+**What clicked:** Decorators just expand the function's abilities without ever changing the original code, they are used for logging, caching, and checking access rights.
+**Bugs fixed:** added *args and **kwargs into wrapper so it works on functions with arguements
+**Commit:** 'Phase 0 Day 3: Decorators, @timer'
+### Thursday, Mar 12 
 **Topics:**
 **What I built:**
 **What clicked:**
 **Bugs fixed:**
 **Commit:** 
-Thursday, Mar 12 
-Topics:
-What I built:
-What clicked:
-Bugs fixed:
-Commit: 
 Friday, Mar 13 
 Topics:
 What I built:

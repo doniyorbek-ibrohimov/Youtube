@@ -1,6 +1,8 @@
 import time
 import asyncio
+import functools
 
+### DAY 1 - OOP, @staticmethod
 class User:
      def __init__(self, username: str, email: str, bio: str = ""):
         self.username = username
@@ -28,6 +30,9 @@ class User:
         return True, "Username is valid."
      
 
+
+     
+### DAY 2 - Asyncio, asyncio.gather, async/await
 #Version 1 - blocking
 def fetch_user_sync(user_id: int) -> str:
     time.sleep(2)  # Simulate a delay in fetching user data
@@ -37,7 +42,22 @@ def fetch_user_sync(user_id: int) -> str:
 async def fetch_user_async(user_id: int) -> str:
     await asyncio.sleep(2)  # Simulate a delay in fetching user data
     return f"User {user_id}"
-     
+
+### DAY 3 - Decorators
+def timer(func):
+    @functools.wraps(func)  # preserves __name_ and _doc_ of the original function
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"{func.__name__} took {end - start:.2f} seconds")
+        return result
+    return wrapper
+
+@timer
+def fetch_videos(user_id: int):
+    time.sleep(2)
+    return f"videos for {user_id}"
 
 if __name__ == "__main__":
     # Syncm - fetch 3 users, measure time
@@ -58,3 +78,6 @@ if __name__ == "__main__":
         #     print(await fetch_user_async(i))
         print(f"Time taken for asynchronous fetching: {time.time() - start_time:.2f} seconds") # 2 seconds
     asyncio.run(main())
+    # fetch_videos = timer(fetch_videos) shortcut is @timer
+    fetch_videos(1)
+    print(fetch_videos.__name__)
