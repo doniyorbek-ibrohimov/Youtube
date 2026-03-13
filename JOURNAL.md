@@ -19,21 +19,16 @@ Commit this file every session.
 ### Wednesday, Mar 11 
 **Topics:** Decorators
 **What I built:** @timer that wraps a function fetch_videos.
-**What clicked:** Decorators just expand the function's abilities without ever changing the original code, they are used for logging, caching, and checking access rights.
+**What clicked:** Decorators just expand the function's behaviour without ever changing the original code, they are used for logging, caching, and checking access rights.
 **Bugs fixed:** added *args and **kwargs into wrapper so it works on functions with arguements
 **Commit:** 'Phase 0 Day 3: Decorators, @timer'
-### Thursday, Mar 12 
-**Topics:**
-**What I built:**
-**What clicked:**
-**Bugs fixed:**
-**Commit:** 
-Friday, Mar 13 
-Topics:
-What I built:
-What clicked:
-Bugs fixed:
-Commit: 
+### Friday, Mar 13 
+**Topics:** Docstrings
+**What I built:** Docstrings for class User's fucnctions and other standalone fucntions.
+**What clicked:** Docsstrings explain what the function does and expect, # comments just explain how the code works.
+**Bugs fixed:** None
+**Commit:** 'Phase 0 Day 3: Docstrings
+
 Week 1 Summary:
 Hours: | Commits: | KPIs hit: 
 Week 2 — Mar 16–22, 2026 

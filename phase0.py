@@ -14,13 +14,29 @@ class User:
         return self.username
      
      def verify_email(self):
+         """
+         Validates the email format and sets is_email_verified to True if valid.
+         
+         Args: None
+
+         Returns: A tuple of (is_valid: bool, message: str)
+         """
          if all(c.isalnum() or c in "_@." for c in self.email) and "@" in self.email:
              self.is_email_verified = True
              return True, "Email is valid and verified."
-         return False
+         return False, "Email is invalid."
      
      @staticmethod
      def validate_username(username: str) -> tuple[bool, str]:
+        """
+        Validates the username against Youtube's username rules:
+        - Must be between 8 and 30 characters long.
+        - Can only contain letters, numbers, and underscores.
+        
+        Args: username (str): The username to validate.
+
+        Returns: A tuple of (is_valid: bool, message: str)
+        """
         if len(username) < 8:
             return False, "Username must be at least 8 characters long."
         if len(username) > 30:
@@ -35,16 +51,28 @@ class User:
 ### DAY 2 - Asyncio, asyncio.gather, async/await
 #Version 1 - blocking
 def fetch_user_sync(user_id: int) -> str:
+    """
+    Simulates a blocking database call to fetch users.
+    Takes 2 seconsds. Used to demonstrate sync vs async timing. 
+    """
     time.sleep(2)  # Simulate a delay in fetching user data
     return f"User {user_id}"
 
 #Version 2 - non-blocking
 async def fetch_user_async(user_id: int) -> str:
+    """
+    Simulates a non-blocking database call to fetch users.
+    Takes 2 seconsds. Used to demonstrate sync vs async timing. 
+    """
     await asyncio.sleep(2)  # Simulate a delay in fetching user data
     return f"User {user_id}"
 
 ### DAY 3 - Decorators
 def timer(func):
+    """
+    A decorator that measures the execution time of a function and prints it.
+    May be used for logging or performance monitoring.
+    """
     @functools.wraps(func)  # preserves __name_ and _doc_ of the original function
     def wrapper(*args, **kwargs):
         start = time.time()
@@ -56,6 +84,10 @@ def timer(func):
 
 @timer
 def fetch_videos(user_id: int):
+    """
+    Simulates a blocking database call to fetch videos.
+    Takes 2 seconsds. Used to demonstrate the timer decorator.
+    """
     time.sleep(2)
     return f"videos for {user_id}"
 
