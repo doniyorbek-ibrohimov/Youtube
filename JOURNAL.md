@@ -27,7 +27,13 @@ Commit this file every session.
 **What I built:** Docstrings for class User's fucnctions and other standalone fucntions.
 **What clicked:** Docsstrings explain what the function does and expect, # comments just explain how the code works.
 **Bugs fixed:** None
-**Commit:** 'Phase 0 Day 3: Docstrings
+**Commit:** 'Phase 0 Day 4: Docstrings
+### Saturday, Mar 14 
+**Topics:** Generators, yield, next
+**What I built:** A generator to read a large file
+**What clicked:** Generators are used to process large files, handle video data - they don't use much memory, because yield just pauses the function and hands back the value, and when you call next() it resumes from where it paused.
+**Bugs fixed:** None
+**Commit:** 'Phase 0 Day 5: Generators, yield/next'
 
 Week 1 Summary:
 Hours: | Commits: | KPIs hit: 

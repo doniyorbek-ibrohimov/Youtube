@@ -91,6 +91,30 @@ def fetch_videos(user_id: int):
     time.sleep(2)
     return f"videos for {user_id}"
 
+### DAY 4 - Generators, yield. next
+def count_up(n: int):
+    """
+    A generator function that yields numbers from 0 to n-1, one at a time.
+    """
+    i = 0
+    while i < n:
+        yield i # produces one value at a time, then PAUSES
+        i += 1
+gen = count_up(1_000_000)
+print(next(gen)) # 0
+print(next(gen)) # 1
+print(next(gen)) # 2
+
+def read_large_file(file_path: str):
+    """
+    A generator function that reads a large file line by line, yielding one line at a time.
+    This is memory efficient for large files.
+    """
+    with open(file_path, 'r') as f:
+        for line in f:
+            yield line.strip()
+
+
 if __name__ == "__main__":
     # Syncm - fetch 3 users, measure time
     start_time = time.time()
